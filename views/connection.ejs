@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>R.I.O.T</title>
+  <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+  <link rel="stylesheet" href="/assets/css/all.css" />
+
+</head>
+
+<body>
+  <%- include ('./partials/header.ejs' ,currentUser) %>
+
+  <main class="main-class">
+    <section>
+      <h2><%=connectionDetails.connectionName %></h2>
+      <div class="person-logo-div">
+        <img alt="Person Logo" class="person-logo" src=<%= connectionDetails.connectionImageURL %> />
+        <ul>
+          <li>Hosted by: <%= connectionDetails.hostedby %></li>
+          <li>Date: <%= connectionDetails.connectionDate %> <%= connectionDetails.connectionTime %></li>
+          <li>Location: <%=connectionDetails.connectionLocation %></li>
+        </ul>
+      </div>
+      <div class="event-details">
+        <h3>Details:</h3>
+        <p><%=connectionDetails.connectionDetails %></p>
+      </div>
+      <div class="rsvp">
+        <h3 class="interested">Interested ?</h3>
+        <form class="update-delete-button" method="POST" action="/postreq">
+          <button class="Yes-button" name="rsvp" value="Yes <%= connectionDetails.connectionId %>">
+            Yes
+          </button>
+          <button class="No-button" name="rsvp" value="No <%= connectionDetails.connectionId %>">
+            No
+          </button>
+          <button class="Maybe-button" name="rsvp" value="Maybe <%= connectionDetails.connectionId %>">
+            Maybe
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <%- include ('./partials/footer.ejs') %>
+</body>
+
+</html>

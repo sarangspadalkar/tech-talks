@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>R.I.O.T</title>
+  <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+  <link rel="stylesheet" href="/assets/css/all.css" />
+</head>
+
+<body>
+  <%- include ('./partials/header.ejs',currentUser) %>
+
+  <main class="newConn-class">
+    <% if (errors){ %>
+    <p><strong>Please correct the below errors and try again</strong></p>
+    <ul>
+      <% for (var i = 0; i <errors.length;i++){ %>
+      <li style="color: red;"><%= errors[i].msg %> </li><br>
+      <% } %>
+    </ul>
+    <%} %>
+    <form class="update-delete-button" method="POST" action="/connection/newConnection">
+      <table class="newConn-table">
+        <tr>
+          <td>
+            <label for="topic">Topic:</label></td>
+          <td>
+            <input type="text" size="25" name="Topic" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="name">Name:</label></td>
+          <td>
+            <input type="text" name="Name" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="details">Details:</label></td>
+          <td>
+            <textarea name="Details" required></textarea>
+          </td>
+        </tr>
+        <!-- <tr>
+          <td>
+            <label for="hostedby">Host:</label></td>
+          <td>
+            <input type="text" name="hostedby" value="Sarang Padalkar" required />
+          </td>
+        </tr> -->
+        <tr>
+          <td>
+            <label>Where:</label></td>
+          <td>
+            <input type="text" name="Where" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>When:</label></td>
+          <td>
+            <input type="datetime-local" name="When" required />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="submit" class="btn" name="Create_Connection">Create Connection</button>
+          </td>
+        </tr>
+
+      </table>
+    </form>
+
+  </main>
+  <%- include ('./partials/footer.ejs') %>
+</body>
+
+</html>

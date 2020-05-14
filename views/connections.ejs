@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>R.I.O.T</title>
+    <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+    <link rel="stylesheet" href="/assets/css/all.css">
+</head>
+
+<body>
+    <%- include ('./partials/header.ejs',currentUser) %>
+
+    <main class="main-class">
+        <section>
+            <% Object.keys(connectionData).forEach(value=>{ %>
+            <h2><%= value %></h2>
+            <ol>
+                <% var i =0; %>
+                <% connectionData[value].forEach(connection=>{ %>
+                <% i = i+1; %>
+                <li><a href='/connection?connectionId=<%= connection.connectionId%>'>
+                        <%=i + ". "+connection.connectionName %></a></li>
+                <% }); %>
+            </ol>
+            <% }); %>
+        </section>
+    </main>
+
+    <%- include ('./partials/footer.ejs') %>
+</body>
+
+</html>

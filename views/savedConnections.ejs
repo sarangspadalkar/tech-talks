@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>R.I.O.T</title>
+  <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+  <link rel="stylesheet" href="/assets/css/all.css" />
+
+</head>
+
+<body>
+  <%- include ('./partials/header.ejs',currentUser) %>
+
+  <main class="main-class">
+    <section>
+      <h2>User's Connections</h2>
+      <div class="person-logo-div">
+        <table class=savedconnection-table>
+          <tr>
+            <th>Events</th>
+            <th>Category</th>
+            <th>RSVP</th>
+            <th></th>
+          </tr>
+          <% savedConnections.forEach(value=>{ %>
+          <tr>
+            <td><%= value.connectionObject.connectionTopic %></td>
+            <td><%= value.connectionObject.connectionName %></td>
+            <td><%= value.rsvp %></td>
+            <td>
+              <form class="update-delete-button" method="POST" action="/postreq">
+                <button class="Maybe-button" name="update" value=<%= value.connectionObject.connectionId %>>
+                  Update
+                </button>
+              </form>
+              <form class="update-delete-button" method="POST" action="/postreq">
+                <button class="No-button" name="delete" value=<%= value.connectionObject.connectionId %>>
+                  Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }); %>
+
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <%- include ('./partials/footer.ejs') %>
+</body>
+
+</html>

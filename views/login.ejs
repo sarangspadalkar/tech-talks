@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>R.I.O.T</title>
+    <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+    <link rel="stylesheet" href="/assets/css/all.css" />
+</head>
+
+<body>
+    <%- include ('./partials/header.ejs',{currentUser :"" }) %>
+
+    <main class="Login-class">
+        <h2>Welcome to our page.</h2>
+        <h3>Enter your Username and password to Login </h3>
+        <% if (errors){ %>
+        <p><strong>Please correct the below errors and try again</strong></p>
+        <ul>
+            <% for (var i = 0; i <errors.length;i++){ %>
+            <li style="color: red;"><%= errors[i].msg %> </li><br>
+            <% } %>
+        </ul>
+        <%} %>
+        <form method="POST" action="/login">
+            <table class="login-table">
+                <tr>
+                    <td>
+                        <label>Username:</label></td>
+                    <td>
+                        <input type="text" name="username" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Password:</label></td>
+                    <td>
+                        <input type="password" name="password" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" class="btn" name="login">Login</button>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </main>
+
+    <%- include ('./partials/footer.ejs') %>
+</body>
+
+</html>

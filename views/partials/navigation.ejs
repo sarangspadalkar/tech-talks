@@ -1,0 +1,16 @@
+<div>
+    <div class="general-site-navigation">
+        <nav>
+            <ul>
+                <li><a class="hyperlink" href="/">Home</a></li>
+                <li><a class="hyperlink" href="/connections">Connections</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="user-login">
+        <% if (currentUser) { %>
+        <h3>Welcome <%=currentUser.firstName %>!</h3>
+        <% }  %>
+    </div>
+</div>

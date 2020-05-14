@@ -1,0 +1,316 @@
+@charset "UTF-8";
+
+html,
+h1,
+h2,
+ul,
+li,
+a,
+p,
+footer,
+header,
+main,
+nav,
+section {
+  padding: 0;
+  margin: 0;
+}
+
+h1,
+h2 {
+  color: black;
+}
+
+.banner {
+  color: white;
+  width: 100%;
+  height: 110px;
+  line-height: 90px;
+  vertical-align: middle;
+  background-color: transparent;
+}
+
+.logo-header {
+  float: left;
+  background-color: transparent;
+}
+
+.logo {
+  width: 160px;
+  float: left;
+  margin: 10px 15px 0 0;
+  background-color: transparent;
+}
+
+.connection-login-info {
+  float: right;
+  padding-right: 20px;
+  margin-top: 10px;
+}
+
+.hyperlink {
+  color: white;
+  text-decoration: none;
+}
+
+.banner-name {
+  float: left;
+  font-style: italic;
+  color: white;
+  font-size: 40px;
+  font-family: serif, Arial, sans-serif;
+}
+
+.general-site-navigation {
+  background-color: transparent;
+}
+
+body {
+  margin: 0;
+  /* height: 100vh; */
+  color: black;
+  /* background-image: url("/assets/Images/single_runner.jpg"); */
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: cursive, Arial, sans-serif;
+  font-size: 15px;
+}
+
+li {
+  display: inline;
+  padding: 10px;
+}
+
+
+main {
+  align-content: center;
+}
+
+.main-class li {
+  /* color: black; */
+  display: table;
+}
+
+.main-class {
+  padding-top: 5%;
+  padding-left: 10%;
+  width: 90%;
+}
+
+.person-logo {
+  width: 120px;
+  float: left;
+}
+
+.event-details {
+  max-width: 80%;
+  padding: 0 0 0 20px;
+  font-size: larger;
+  text-align: justify;
+}
+
+.person-logo-div {
+  padding: 20px 0 0 20px;
+}
+
+.rsvp {
+  max-width: 50%;
+  padding: 0 0 0 20px;
+  text-align: justify;
+}
+
+.Yes-button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 15px;
+  cursor: pointer;
+  appearance: button;
+  border-radius: 30px;
+  font-family: cursive;
+
+}
+
+.No-button {
+  background-color: red;
+  border: none;
+  appearance: button;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 30px;
+  font-family: cursive;
+}
+
+.Maybe-button {
+  background-color: rgb(101, 192, 248);
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  appearance: button;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 30px;
+  font-family: cursive;
+}
+
+.update-delete-button {
+  display: inline;
+  border: none;
+  color: black;
+  /* padding: 15px; */
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 30px;
+  font-family: cursive;
+}
+
+.login-table td,
+th {
+  text-align: center;
+  font-size: large;
+  border: none;
+
+}
+
+.login-table {
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Login-class {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  text-align: center;
+  background-color: transparent;
+  /* color: black; */
+  width: 500px;
+  height: 300px;
+  border-radius: 40px;
+  padding-top: 20px;
+  font-style: italic;
+}
+
+.newConn-class {
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  width: 500px;
+  height: fit-content;
+  font-size: larger;
+}
+
+.newConn-table {
+
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-color: black;
+}
+
+.newConn-table td,
+tr {
+  text-align: left;
+  font-size: 20px;
+  border: none;
+  padding: 10px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  font-size: x-large;
+
+}
+
+.savedconnection-table {
+  width: 80%;
+  /* border: 1px solid black; */
+  border-collapse: collapse;
+  /* padding: 10px; */
+  text-align: center;
+}
+
+.savedconnection-table th,
+td {
+  /* border: 1px solid black; */
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: center;
+
+}
+
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.banner-footer {
+  color: white;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+  background-color: transparent;
+}
+
+.social-media {
+  float: right;
+  padding-right: 30px;
+}
+
+.social-media a {
+  margin: 5px;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+.form-input_text {
+  height: 30px;
+  margin: 30px 0 0 10px;
+  width: 40%;
+  font-size: medium;
+}
+
+.form-input_label {
+  font-size: medium;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.btn {
+  /* padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px; */
+  font-size: medium;
+  float: right;
+  white-space: normal;
+  width: min-content;
+  height: 40px;
+}
+
+
+.user-login {
+  float: right;
+  padding-right: 10%;
+  /* color: unset; */
+}
+
+.new-connect-details {
+  margin: 90px;
+  font-size: large;
+  text-align: justify;
+}

@@ -1,0 +1,27 @@
+<div class="banner">
+    <div class="logo-header">
+        <a href="/"><img src="/assets/Images/RIOT.png" alt="Riot Logo" class="logo"></a>
+        <h1 class="banner-name">Running Is Our Therapy</h1>
+
+    </div>
+    <div class="connection-login-info">
+        <nav>
+            <ul>
+                <li><a class="hyperlink" href="/connection/newConnection">Start a new connection</a></li>
+                <% if (currentUser) { %>
+                <li><a class="hyperlink" href="/login/signout">Sign Out</a></li>
+                <li><a class="hyperlink" href="/login/savedConnections">My Connections</a></li>
+
+            </ul>
+        </nav>
+    </div>
+    <% } else { %>
+    <li><a class="hyperlink" href="/login">Log In</a></li>
+    <li><a class="hyperlink" href="#">Sign Up</a></li>
+    </ul>
+    </nav>
+</div>
+
+<% } %>
+</div>
+<%- include ('./navigation.ejs') %>
