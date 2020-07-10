@@ -22,7 +22,7 @@ app.use(session({
 //Database Connection.
 var intializeDb = async function () {
     try {
-        mongoose.connect("mongodb://localhost/nbad-db", {
+        mongoose.connect("mongodb+srv://admin-user:P@ssword123@cluster0.fy5hu.mongodb.net/runner-db?retryWrites=true&w=majority", {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
@@ -31,7 +31,7 @@ var intializeDb = async function () {
         db.on("error", console.error.bind(console, "connection error:"));
         db.once("open", function () {
             // we're connected!
-            console.log("We're connected to nbad-db!");
+            console.log("We're connected to runner-db!");
         });
     } catch (error) {
         console.log("Error while establishing database connection : " + error);
@@ -45,6 +45,7 @@ intializeDb();
 // Below we are importing all the routing configurations into different variables.
 var index = require(__dirname + "/routes/index");
 var login = require(__dirname + "/routes/login");
+var signup = require(__dirname + "/routes/signup");
 var connection = require(__dirname + "/routes/connection");
 var connections = require(__dirname + "/routes/connections");
 var contact = require(__dirname + "/routes/contact");
@@ -57,9 +58,9 @@ var postreq = require(__dirname + "/routes/post_handler");
 app.use("/postreq", postreq); //This route is used to handle all the post requests(RSVP(YES,NO,MAYBE), UPDATE and DELETE buttons).
 app.use("/", index); //This route is used for home page.
 app.use("/login", login); //This route is used for login page.
+app.use("/signup", signup); //This route is used for signup page.
 app.use("/connection", connection); //This route is used for connection page.
 app.use("/connections", connections); //This route is used for connections page.
-// app.use("/savedConnections", savedConnections);
 app.use("/about", about); //This route is used for about page.
 app.use("/contact", contact); //This route is used for contact page.
 

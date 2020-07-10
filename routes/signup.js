@@ -1,0 +1,104 @@
+var express = require('express');
+var router = express.Router();
+var bodyParser = require("body-parser");
+const {
+    check,
+    validationResult
+} = require('express-validator');
+var connectionDb = require("../utility/connectionDB");
+var userConnectionDb = require("../utility/UserProfileDB");
+var userDb = require("../utility/userDB");
+var userProfile = require("../utility/userProfileDB");
+var userModel = require("../models/userModel");
+
+var urlencodedParser = bodyParser.urlencoded({
+    extended: false
+});
+
+// To handle the GET request for Login.
+router.get('/', function (req, res) {
+    if (req.session.theUser == null) {
+        res.render('signup', {
+            errors: null,
+            success: false
+        });
+    } else {
+        res.render('index', {
+            currentUser: req.session.theUser
+        });
+    }
+});
+
+
+router.post("/", urlencodedParser, [
+    // Username must be consist of alphanumerics and at least 4 chars long.
+    check('username').isAlphanumeric().withMessage('Username field must consists of alphabetical chars')
+    .isLength({
+        min: 4
+    }).withMessage("Username field must be 4 or more characters")
+    .not().isEmpty().withMessage('Username  Value Cannot be left blank'),
+    // Password must be consist of alphanumerics and at least 6 chars long.
+    check('password').isAlphanumeric().withMessage('Password field must consists of alphabetical chars')
+    .isLength({
+        min: 6
+    }).withMessage("Password field must be 6 or more characters")
+    .not().isEmpty().withMessage('Username  Value Cannot be left blank')
+], async function (req, res) {
+
+
+    //check for login validation errors.
+    var signup = validationResult(req);
+    if (!signup.isEmpty()) {
+
+        console.log(signup.array());
+
+        return res.render("signup", {
+            currentUser: req.session.theUser,
+            errors: signup.array()
+        });
+
+    } else {
+        //check if the username exists in the DB.
+        var user_name = await userDb.check_user(req.body.username);
+
+        if (!user_name) {
+
+            var connectionId = await userDb.add_user(
+                req.body.firstName,
+                req.body.lastName,
+                req.body.username,
+                req.body.password,
+                req.body.email,
+                req.body.address,
+                req.body.city,
+                req.body.state,
+                req.body.zipcode,
+                req.body.country
+            );
+            res.render('signup', {
+                errors: null,
+                success: true
+            });
+
+        } else {
+            errors = [{
+                value: req.body.username,
+                msg: 'Username is taken',
+                param: 'username',
+                location: 'body'
+            }];
+            console.log(errors);
+
+            return res.render("signup", {
+                currentUser: req.session.theUser,
+                errors: errors
+            });
+        }
+    }
+
+
+});
+
+
+
+module.exports = router;

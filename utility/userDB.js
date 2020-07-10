@@ -26,6 +26,52 @@ var getUserPassword = async function getUserPassword(username) {
   }
 };
 
+
+
+var add_user = async function add_user(firstname,
+  lastname,
+  username,
+  password,
+  email,
+  address,
+  city,
+  state,
+  zipcode,
+  country) {
+  try {
+
+    var userId = await User.find({}, {
+      userId: 1,
+      _id: 0
+    }).sort({
+      userId: -1
+    }).limit(1)
+    console.log(userId);
+    var newUser = new User({
+      userId: userId[0].userId + 1,
+      firstName: firstname,
+      lastName: lastname,
+      username: username,
+      password: password,
+      email: email,
+      address: address,
+      city: city,
+      state: state,
+      zipCode: zipcode,
+      country: country
+    });
+    let result = await newUser.save();
+    if (result) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.log("Error while adding user: " + error);
+    return false;
+  }
+};
+
 var check_user = async function check_user(username) {
   try {
     var result = await User.findOne({
@@ -42,8 +88,12 @@ var check_user = async function check_user(username) {
   }
 };
 
+
+
+
 module.exports = {
   getUserPassword: getUserPassword,
   getUser: getUser,
-  check_user: check_user
+  check_user: check_user,
+  add_user: add_user
 };

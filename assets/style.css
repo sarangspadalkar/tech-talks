@@ -200,6 +200,32 @@ th {
   font-style: italic;
 }
 
+.signup-class {
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  width: 500px;
+  height: fit-content;
+
+}
+
+.signup-table {
+
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-color: black;
+}
+
+.signup-table td,
+tr {
+  text-align: left;
+  border: none;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 15px;
+}
+
 .newConn-class {
   position: absolute;
   top: 25%;
@@ -298,7 +324,7 @@ footer {
   font-size: medium;
   float: right;
   white-space: normal;
-  width: min-content;
+  /* width: min-content; */
   height: 40px;
 }
 
