@@ -4,8 +4,10 @@ This is a node.js based Meet up Web Application for Marathon Runners.
 Installation Steps:
 
 1. Install Node:
-
-        Download and install Node.js from the website: https://nodejs.org/en/download/
+    
+    Download and install Node.js from the website: 
+   
+        https://nodejs.org/en/download/
 
 2. Clone this repository
 3. Browse to the folder and install the required node packages using below command:
