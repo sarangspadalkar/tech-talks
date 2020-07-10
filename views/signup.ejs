@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>R.I.O.T</title>
+  <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+  <link rel="stylesheet" href="/assets/css/all.css" />
+</head>
+
+<body>
+  <%- include ('./partials/header.ejs',{currentUser :"" }) %>
+
+  <main class="signup-class">
+    <% if (errors){ %>
+    <p><strong>Please correct the below errors and try again</strong></p>
+    <ul>
+      <% for (var i = 0; i <errors.length;i++){ %>
+      <li style="color: red;"><%= errors[i].msg %> </li><br>
+      <% } %>
+    </ul>
+    <%} %>
+    <% if (success){ %>
+    <p style="color: red;"><strong>User has been created, you can login now.</strong></p>
+
+    <%} %>
+    <form method="POST" action="/signup">
+      <table class="signup-table">
+        <tr>
+          <td>
+            <label for="username">Username:</label></td>
+          <td>
+            <input type="text" name="username" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="password">Password:</label></td>
+          <td>
+            <input type="password" name="password" required />
+          </td>
+        </tr>
+        <tr>
+        <tr>
+          <td>
+            <label for="firstName">First Name:</label></td>
+          <td>
+            <input type="text" name="firstName" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="lastName">Last Name:</label></td>
+          <td>
+            <input type="text" name="lastName" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="email">Email:</label></td>
+          <td>
+            <input type="email" name="email" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="address">Address:</label></td>
+          <td>
+            <input type="text" name="address" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="city">City:</label></td>
+          <td>
+            <input type="text" name="city" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="state">State:</label></td>
+          <td>
+            <input type="text" name="state" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="zipcode">Zip Code:</label></td>
+          <td>
+            <input type="text" name="zipcode" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="country">Country:</label></td>
+          <td>
+            <input type="text" name="country" required />
+          </td>
+        </tr>
+
+        <td colspan="2">
+          <button type="submit" class="btn" name="Sign_Up">Sign Up</button>
+        </td>
+        </tr>
+
+      </table>
+    </form>
+
+  </main>
+
+
+  <%- include ('./partials/footer.ejs') %>
+</body>
+
+</html>
