@@ -4,112 +4,120 @@
 <head>
   <meta charset="UTF-8" />
   <title>R.I.O.T</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
   <link rel="stylesheet" type="text/css" href="/assets/style.css" />
-  <link rel="stylesheet" href="/assets/css/all.css" />
+
 </head>
 
 <body>
   <%- include ('./partials/header.ejs',{currentUser :"" }) %>
 
-  <main class="signup-class">
+
+  <div class="container">
+    <h3> Create User</h3>
     <% if (errors){ %>
     <p><strong>Please correct the below errors and try again</strong></p>
     <ul>
       <% for (var i = 0; i <errors.length;i++){ %>
-      <li style="color: red;"><%= errors[i].msg %> </li><br>
+      <li style="color: red;"><%= errors[i].msg %> </li>
       <% } %>
     </ul>
     <%} %>
     <% if (success){ %>
-    <p style="color: red;"><strong>User has been created, you can login now.</strong></p>
-
+    <p style="color: green;"><strong>User has been created, you can login now.</strong></p>
     <%} %>
-    <form method="POST" action="/signup">
-      <table class="signup-table">
-        <tr>
-          <td>
-            <label for="username">Username:</label></td>
-          <td>
-            <input type="text" name="username" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="password">Password:</label></td>
-          <td>
-            <input type="password" name="password" required />
-          </td>
-        </tr>
-        <tr>
-        <tr>
-          <td>
-            <label for="firstName">First Name:</label></td>
-          <td>
-            <input type="text" name="firstName" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="lastName">Last Name:</label></td>
-          <td>
-            <input type="text" name="lastName" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="email">Email:</label></td>
-          <td>
-            <input type="email" name="email" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="address">Address:</label></td>
-          <td>
-            <input type="text" name="address" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="city">City:</label></td>
-          <td>
-            <input type="text" name="city" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="state">State:</label></td>
-          <td>
-            <input type="text" name="state" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="zipcode">Zip Code:</label></td>
-          <td>
-            <input type="text" name="zipcode" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="country">Country:</label></td>
-          <td>
-            <input type="text" name="country" required />
-          </td>
-        </tr>
 
-        <td colspan="2">
-          <button type="submit" class="btn" name="Sign_Up">Sign Up</button>
-        </td>
-        </tr>
+    <div class="row justify-content-center">
+      <form method="POST" action="/signup">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label" for="username">Username:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" size="25" name="username" required placeholder="Enter Username">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label" for="password">Password:</label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" size="25" name="password" required
+                  placeholder="Enter password">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label" for="firstName">First Name:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" size="25" name="firstName" required
+                  placeholder="Enter first name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label" for="lastName">Last Name:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" size="25" name="lastName" required
+                  placeholder="Enter last name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label" for="email">Email:</label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control" size="25" name="email" required placeholder="Enter email">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label" for="address">Address:</label>
+              <div class="col-sm-9">
+                <textarea type="text" class="form-control" size="25" name="address" required
+                  placeholder="Enter address"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label" for="city">City:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" size="25" name="city" required placeholder="Enter city">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label" for="zipcode">Zip Code:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" size="25" name="zipcode" required placeholder="Enter zipcode">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label" for="country">Country:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" size="25" name="country" required placeholder="Enter country">
+              </div>
+            </div>
 
-      </table>
-    </form>
+          </div>
+        </div>
+        <button type="submit" class="btn bg-primary" name="Sign_Up">Create Account <i class="fa fa-user-plus"></i>
+        </button>
+      </form>
 
-  </main>
-
+    </div>
+  </div>
 
   <%- include ('./partials/footer.ejs') %>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
 </body>
 
 </html>

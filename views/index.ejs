@@ -1,62 +1,73 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <title>R.I.O.T</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
   <link rel="stylesheet" type="text/css" href="/assets/style.css" />
-  <link rel="stylesheet" href="/assets/css/all.css" />
 </head>
 
 <body>
   <%- include ('./partials/header.ejs',currentUser) %>
 
-  <main class="main-class">
-    <section>
+  <div class="container">
+    <div class="row align-items-center">
       <h2>What we're about !!!</h2>
-      <article class="event-details">
-        <br />
-        <p>
-          R.I.O.T&copy; is an meetup group for marathon sprinters. These
-          meetups help beginners to meet with experienced sprinters to kick
-          start their sprinting journey, also helps experienced sprinters to
-          discuss preparation strategies and have a great time!.
-        </p>
-      </article>
-    </section>
-    <br />
-    <section>
+      <p>
+        R.I.O.T&copy; is an meetup group for marathon sprinters. These
+        meetups help beginners to meet with experienced sprinters to kick
+        start their sprinting journey, also helps experienced sprinters to
+        discuss preparation strategies and have a great time!.
+      </p>
+    </div>
+    <div class="row align-items-center">
       <h2>Why should you join?</h2>
-      <article class="event-details">
-        <ul>
-          <li>
-            <p>
-              Meet different sprinters who are preparing for or who have taken
-              an interest in long distance races! Accumulate to share tips,
-              discover preparing accomplices, and have a great time!.
-            </p>
-          </li>
-          <li>
-            <p>
-              Have you at any point needed to do a 5K, Half Marathon or other
-              marathon occasion? Well now's your opportunity to make your
-              objective a reality. Start with our 10km long distance race
-              meetup occasion and get tips from experienced sprinters.
-            </p>
-          </li>
-          <li>
-            <p>
-              Are you an experienced sprinters ???, join our charity marathon
-              meetup group where you can find fellow sprinters who run for a
-              social cause.
-            </p>
-          </li>
-        </ul>
-      </article>
-    </section>
-  </main>
 
+      <ul>
+        <li>
+          <p>
+            Meet different sprinters who are preparing for or who have taken
+            an interest in long distance races! Accumulate to share tips,
+            discover preparing accomplices, and have a great time!.
+          </p>
+        </li>
+        <li>
+          <p>
+            Have you at any point needed to do a 5K, Half Marathon or other
+            marathon occasion? Well now's your opportunity to make your
+            objective a reality. Start with our 10km long distance race
+            meetup occasion and get tips from experienced sprinters.
+          </p>
+        </li>
+        <li>
+          <p>
+            Are you an experienced sprinters ???, join our charity marathon
+            meetup group where you can find fellow sprinters who run for a
+            social cause.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
   <%- include ('./partials/footer.ejs') %>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
 </body>
 
 </html>

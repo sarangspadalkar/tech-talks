@@ -1,27 +1,50 @@
-<div class="banner">
-    <div class="logo-header">
-        <a href="/"><img src="/assets/Images/RIOT.png" alt="Riot Logo" class="logo"></a>
-        <h1 class="banner-name">Running Is Our Therapy</h1>
-
+<header class="jumbotron">
+    <div class="container-fluid ">
+        <div class="row align-items-center ">
+            <div class="col-sm-2">
+                <a href="/"><img src="/assets/Images/RIOT.png" width="150" height="70"></a>
+            </div>
+            <div class="col-sm-5">
+                <h2 class="text-left" style="color: white;"><i>Running Is Our Therapy</i> </h2>
+            </div>
+            <div class="col-sm-4 offset-md-1">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="/connection/newConnection" style="color: white;">Start a new
+                            Connection <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </a></li>
+                    <% if (currentUser) { %>
+                    <li class="list-inline-item"><a href="/login/signout" style="color: white;">Sign Out <i
+                                class="fa fa-sign-out" aria-hidden="true"></i>
+                        </a></li>
+                    <li class="list-inline-item"><a href="/login/savedConnections" style="color: white;">My Connections
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </a></li>
+                    <% } else { %>
+                    <li class="list-inline-item"><a href="/login" style="color: white;">Login <i class="fa fa-sign-in"
+                                aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="/signup" style="color: white;">Sign Up <i
+                                class="fa fa-user-plus"></i></a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="connection-login-info">
-        <nav>
-            <ul>
-                <li><a class="hyperlink" href="/connection/newConnection">Start a new connection</a></li>
-                <% if (currentUser) { %>
-                <li><a class="hyperlink" href="/login/signout">Sign Out</a></li>
-                <li><a class="hyperlink" href="/login/savedConnections">My Connections</a></li>
-
+    <div class="row justify-content-between">
+        <div class="col-sm-4">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="/" style="color: white;"><i class="fa fa-home"
+                            aria-hidden="true"></i>
+                        Home </a></li>
+                <li class="list-inline-item"><a href="/connections" style="color: white;">All Connections <i
+                            class="fa fa-calendar" aria-hidden="true"></i></a></li>
             </ul>
-        </nav>
+        </div>
+        <% if (currentUser) { %>
+        <div class="col-sm-4 ">
+            <h4>Welcome <%=currentUser.firstName %>!</h4>
+        </div>
+        <% }  %>
     </div>
-    <% } else { %>
-    <li><a class="hyperlink" href="/login">Log In</a></li>
-    <li><a class="hyperlink" href="/signup">Sign Up</a></li>
-    </ul>
-    </nav>
-</div>
+</header>
 
-<% } %>
-</div>
-<%- include ('./navigation.ejs') %>
+<br>
