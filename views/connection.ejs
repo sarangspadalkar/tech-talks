@@ -25,11 +25,12 @@
       <div class="col-sm-0.5">
         <img alt="Person Logo" style="width: 120px;" src=<%= connectionDetails.connectionImageURL %> />
       </div>
-      <div class="col-sm-5">
+      <div class="col-sm-5" style="font-size: larger;">
         <ul>
-          <li>Hosted by: <%= connectionDetails.hostedby %></li>
-          <li>Date: <%= connectionDetails.connectionDate %> <%= connectionDetails.connectionTime %></li>
-          <li>Location: <%=connectionDetails.connectionLocation %></li>
+          <li><strong>Hosted by:</strong> <span style="color: white;"><%= connectionDetails.hostedby %></span> </li>
+          <li><strong>Date:</strong> <span style="color: white;"><%= connectionDetails.connectionDate %>  </span>  </li>
+          <li><strong>Time:</strong> <span style="color: white;"> <%= connectionDetails.connectionTime %></span></li>
+          <li><strong>Location:</strong> <span style="color: white;"><%=connectionDetails.connectionLocation %></span> </li>
         </ul>
       </div>
       <div class="col-sm-3">
