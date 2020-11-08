@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var router = express.Router();
 var mongoose = require("mongoose");
-
+const port = 8084;
 app.set("view engine", "ejs");
 app.set('views', __dirname + '/views');
 
@@ -20,7 +20,7 @@ app.use(session({
     saveUninitialized: true
 }));
 //Database Connection.
-var intializeDb = async function () {
+var initializeDb = async function () {
     try {
         mongoose.connect("mongodb+srv://admin-user:P@ssword123@cluster0.fy5hu.mongodb.net/runner-db?retryWrites=true&w=majority", {
             useNewUrlParser: true,
@@ -39,7 +39,7 @@ var intializeDb = async function () {
 };
 
 //Establish DB connection.
-intializeDb();
+initializeDb();
 
 
 // Below we are importing all the routing configurations into different variables.
@@ -67,5 +67,5 @@ app.use("/contact", contact); //This route is used for contact page.
 
 
 
-app.listen(8084); //Application listens at 8084 port.
-console.log("Now listening on port 8084");
+app.listen(port); //Application listens at 8084 port.
+console.log(`App running on http://localhost:${port}`);
