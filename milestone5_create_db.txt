@@ -1,0 +1,138 @@
+
+//resetting database
+use tech-talks-db
+db.dropDatabase()
+use tech-talks-db
+
+//creating the database
+use tech-talks-db
+
+//inserting user in users collection
+db.users.insert([{
+  "userId": 1,
+  "firstName": "Tom",
+  "lastName": "Hunter",
+  "username":"thunter",
+  "password": "123456",
+  "email": "thunt@123.com",
+  "address": "1262, John Taylor Rd",
+  "city": "Charlotte",
+  "state": "North Carolina",
+  "zipCode": 28213,
+  "country": "USA", "isAdmin":false
+  
+},{
+  "userId": 2,
+  "firstName": "Chris",
+  "lastName": "Taylor",
+  "username":"ctaylor",
+  "password": "123456",
+  "email": "ctaylor@123.com",
+  "address": "1362, John Cirk Rd",
+  "city": "Charlotte",
+  "state": "North Carolina",
+  "zipCode": 28214,
+  "country": "USA", "isAdmin":false
+},{
+  "userId": 3,
+  "firstName": "Jake",
+  "lastName": "Wilson",
+  "username":"jwilson",
+  "password": "123456",
+  "email": "jwilson@123.com",
+  "address": "1462, John Wilson Rd",
+  "city": "Charlotte",
+  "state": "North Carolina",
+  "zipCode": 28215,
+  "country": "USA", "isAdmin":false
+},{
+  "userId": 4,
+  "firstName": "Sarang",
+  "lastName": "Padalkar",
+  "username":"spadalkar",
+  "password": "123456",
+  "email": "spadalkar@123.com",
+  "address": "1462, Mint Polly Rd",
+  "city": "Charlotte",
+  "state": "North Carolina",
+  "zipCode": 28216,
+  "country": "USA", "isAdmin":true
+}]);
+
+
+//inserting connection in connections collection
+db.connections.insert([{
+  "connectionId": "111111",
+  "userId":0,
+  "connectionName": "Mini Marathon",
+  "hostedby":"Sarang Padalkar",
+  "connectionTopic": "Competitive Marathons",
+  "connectionDetails": "Competitive 10km Marathon race",
+  "connectionLocation": "Charlotte",
+  "connectionDate": "April 7th 2020",
+  "connectionTime": "01:12 pm",
+  "connectionImageURL":"/assets/Images/man1.png"
+},
+{
+  "connectionId": "222222",
+  "userId":0,
+  "connectionName": "Half Marathon",
+  "hostedby":"Sarang Padalkar",
+  "connectionTopic": "Competitive Marathons",
+  "connectionDetails": "Competitive 20km Marathon race",
+  "connectionLocation": "Charlotte",
+  "connectionDate": "April 8th 2020",
+  "connectionTime": "01:12 pm",
+  "connectionImageURL":"/assets/Images/man2.png"
+},
+{
+  "connectionId": "333333",
+  "userId":0,
+  "connectionName": "Full marathon",
+  "hostedby":"Sarang Padalkar",
+  "connectionTopic": "Competitive Marathons",
+  "connectionDetails": "Competitive 40km Marathon race",
+  "connectionLocation": "Charlotte",
+  "connectionDate": "April 9th 2020",
+  "connectionTime": "01:12 pm",
+  "connectionImageURL":"/assets/Images/man3.png"
+},
+{
+  "connectionId": "444444",
+  "userId":0,
+  "connectionName": "Spartan's Race",
+  "hostedby":"Sarang Padalkar",
+  "connectionTopic": "Marathons for a Social Cause",
+  "connectionDetails": "Homes for our Troops, Help for Heroes",
+  "connectionLocation": "Charlotte",
+  "connectionDate": "April 10th 2020",
+  "connectionTime": "01:12 pm",
+  "connectionImageURL":"/assets/Images/man4.png"
+},
+{
+  "connectionId": "555555",
+  "userId":0,
+  "connectionName": "Foam Fest",
+  "hostedby":"Sarang Padalkar",
+  "connectionTopic": "Marathons for a Social Cause",
+  "connectionDetails": "Building a new orphanage",
+  "connectionLocation": "Charlotte",
+  "connectionDate": "April 11th 2020",
+  "connectionTime": "01:12 pm",
+  "connectionImageURL":"/assets/Images/man5.png"
+},
+{
+  "connectionId": "666666",
+  "userId":0,
+  "connectionName": "Relay for Life",
+  "hostedby":"Sarang Padalkar",
+  "connectionTopic": "Marathons for a Social Cause",
+  "connectionDetails": "Fight against cancer",
+  "connectionLocation": "Charlotte",
+  "connectionDate": "April 12th 2020",
+  "connectionTime": "01:12 pm",
+  "connectionImageURL":"/assets/Images/man6.png"
+}]);
+
+
+

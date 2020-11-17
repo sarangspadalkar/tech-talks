@@ -14,14 +14,19 @@ var userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Last name is mandatory to enter"]
     },
-    username:String,
-    password:String,
+    username: String,
+    password: String,
     email: String,
     address: String,
     city: String,
     state: String,
     zipCode: String,
-    country: String
+    country: String,
+    isAdmin: {
+        type: Boolean,
+        required: [true],
+        default: false
+    }
 });
 
 module.exports = mongoose.model("User", userSchema);

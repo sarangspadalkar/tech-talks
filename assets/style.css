@@ -2,26 +2,21 @@ body {
   margin: 0;
   /* height: 100vh; */
   color: black;
-  background-image: url("/assets/Images/single_runner.jpg");
-  background-position: inherit;
-  background-repeat: no-repeat;
-  background-size: cover;
   font-family: cursive, Arial, sans-serif;
   font-size: 15px;
   height: 100%;
 }
 
 .jumbotron {
-  background: none;
   height: 50px;
+  background-color: #E53E3E;
+
 }
 
 .list-group-item {
-  background: none;
   border: none;
 }
 
 .login-class {
-  background: none;
   border: none;
 }

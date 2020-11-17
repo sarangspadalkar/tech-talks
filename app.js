@@ -22,7 +22,7 @@ app.use(session({
 //Database Connection.
 var initializeDb = async function () {
     try {
-        mongoose.connect("mongodb+srv://admin-user:P@ssword123@cluster0.fy5hu.mongodb.net/runner-db?retryWrites=true&w=majority", {
+        mongoose.connect("mongodb+srv://admin-user:P@ssword123@cluster0.fy5hu.mongodb.net/tech-talks-db?retryWrites=true&w=majority", {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
@@ -31,7 +31,7 @@ var initializeDb = async function () {
         db.on("error", console.error.bind(console, "connection error:"));
         db.once("open", function () {
             // we're connected!
-            console.log("We're connected to runner-db!");
+            console.log("We're connected to tech-talks-db!");
         });
     } catch (error) {
         console.log("Error while establishing database connection : " + error);

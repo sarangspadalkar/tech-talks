@@ -2,27 +2,26 @@
     <div class="container-fluid ">
         <div class="row align-items-center ">
             <div class="col-sm-2">
-                <a href="/"><img src="/assets/Images/RIOT.png" width="150" height="70"></a>
+                <a href="/"><img src="/assets/Images/techTalksLogo.jpg" width="120" height="70"></a>
             </div>
             <div class="col-sm-5">
-                <h2 class="text-left" style="color: white;"><i>Running Is Our Therapy</i> </h2>
+                <h2 class="text-left"><i>Tech Talks</i> </h2>
             </div>
             <div class="col-sm-4 offset-md-1">
                 <ul class="list-inline">
-                    <li class="list-inline-item"><a href="/connection/newConnection" style="color: white;">Start a new
-                            Connection <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <li class="list-inline-item"><a class="btn btn-outline-dark" href="/connection/newConnection" role="button" >Host an Event <i class="fa fa-calendar" aria-hidden="true"></i>
                         </a></li>
                     <% if (currentUser) { %>
-                    <li class="list-inline-item"><a href="/login/signout" style="color: white;">Sign Out <i
+                    <li class="list-inline-item"><a class="btn btn-outline-dark" href="/login/signout" role="button">Sign Out <i
                                 class="fa fa-sign-out" aria-hidden="true"></i>
                         </a></li>
-                    <li class="list-inline-item"><a href="/login/savedConnections" style="color: white;">My Connections
+                    <li class="list-inline-item"><a class="btn btn-outline-dark" role="button" href="/login/savedConnections" >My Events
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </a></li>
                     <% } else { %>
-                    <li class="list-inline-item"><a href="/login" style="color: white;">Login <i class="fa fa-sign-in"
+                    <li class="list-inline-item"><a class="btn btn-outline-dark" role="button" href="/login" >Login <i class="fa fa-sign-in"
                                 aria-hidden="true"></i></a></li>
-                    <li class="list-inline-item"><a href="/signup" style="color: white;">Sign Up <i
+                    <li class="list-inline-item"><a class="btn btn-outline-dark" role="button" href="/signup" >Sign Up <i
                                 class="fa fa-user-plus"></i></a></li>
                     <% } %>
                 </ul>
@@ -32,12 +31,15 @@
     <div class="row justify-content-between">
         <div class="col-sm-4">
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="/" style="color: white;"><i class="fa fa-home"
+                <li class="list-inline-item"><a class="btn btn-outline-info btn-sm" role="button" href="/" ><i class="fa fa-home"
                             aria-hidden="true"></i>
                         Home </a></li>
-                <li class="list-inline-item"><a href="/connections" style="color: white;">All Connections <i
+                <li class="list-inline-item"><a class="btn btn-outline-info btn-sm" role="button" href="/connections" >All Events <i
                             class="fa fa-calendar" aria-hidden="true"></i></a></li>
-            </ul>
+                <% if (currentUser.isAdmin) { %>
+                <li class="list-inline-item"><a class="btn btn-outline-info btn-sm" href="/admin" role="button">Admin Console</a></li>
+                <% }%>
+            </ul> 
         </div>
         <% if (currentUser) { %>
         <div class="col-sm-4 ">
