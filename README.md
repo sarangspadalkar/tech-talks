@@ -1,5 +1,4 @@
-# RIOT - Running Is Our Therapy
-This is a node.js based Meet up Web Application for Marathon Runners.
+# Tech Talks
 
 Installation Steps:
 
