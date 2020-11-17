@@ -11,9 +11,7 @@ router1.get("/", async function (req, res) {
             currentUser: req.session.theUser
         });
     } else {
-        res.send("No connections in DB", {
-            currentUser: req.session.theUser
-        });
+        res.send("No connections in DB");
     }
 });
 

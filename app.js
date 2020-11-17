@@ -51,6 +51,7 @@ var connections = require(__dirname + "/routes/connections");
 var contact = require(__dirname + "/routes/contact");
 var about = require(__dirname + "/routes/about");
 var postreq = require(__dirname + "/routes/post_handler");
+var admin = require(__dirname + "/routes/adminConsole");
 
 
 
@@ -63,7 +64,7 @@ app.use("/connection", connection); //This route is used for connection page.
 app.use("/connections", connections); //This route is used for connections page.
 app.use("/about", about); //This route is used for about page.
 app.use("/contact", contact); //This route is used for contact page.
-
+app.use("/admin", admin);
 
 
 
