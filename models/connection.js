@@ -31,6 +31,11 @@ var connectionSchema = new mongoose.Schema({
         default: "/assets/Images/man3.png",
         required: [true, "required"]
     },
+    connectionStatus: {
+        type: String,
+        default: "pending",
+        required: [true, "required"]
+    }
 });
 
 

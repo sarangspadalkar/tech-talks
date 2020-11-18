@@ -17,6 +17,7 @@ var getUserConnectionList = async function (userId) {
     }
 };
 
+
 // Function to add the Connection to the savedConnections list for the User.
 var addUserConnection = async function (rsvp, connectionId, userId) {
     try {
@@ -47,6 +48,9 @@ var updateConnection = async function (item, rsvpStatus) {
     });
     return result.n > 0 && result.ok == 1;
 };
+
+
+
 
 
 //User Profile related Operations:
@@ -119,7 +123,8 @@ var addConnection = async function (
     cDetails,
     cLocation,
     cDate,
-    cTime
+    cTime,
+    cStatus
 ) {
     try {
         let randomId = Math.floor(Math.random() * Math.floor(100000000)); //Generate a 8 digit random Id for the Connection.
@@ -132,7 +137,8 @@ var addConnection = async function (
             connectionDetails: cDetails,
             connectionLocation: cLocation,
             connectionDate: cDate,
-            connectionTime: cTime
+            connectionTime: cTime,
+            connectionStatus:cStatus
         });
         let result = await newConnection.save();
         if (result == newConnection) {

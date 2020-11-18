@@ -11,9 +11,6 @@
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="/assets/style.css" />
-
-
-
 </head>
 
 <body>
@@ -26,26 +23,30 @@
         <tr>
           <th>Events</th>
           <th>Category</th>
-          <th>User</th>
+          <th>Requested by</th>
+          <th>Requested Date</th>
           <th>Actions</th>
         </tr>
       </thead>
-      <% savedConnections.forEach(value=>{ %>
-      <tr>
-        <td><%= value.connectionObject.connectionTopic %></td>
-        <td><%= value.connectionObject.connectionName %></td>
-        <td><%= value.rsvp %></td>
+      <% Object.keys(savedConnections).forEach(value=>{ %>
+        <% savedConnections[value].forEach(connection=>{ %>
+        <tr>
+        <td><%= connection.connectionName %></td>
+        <td><%= connection.connectionTopic %></td>
+        <td><%= connection.hostedby %></td>
+        <td><%= connection.connectionDate %></td>
         <td>
           <form method="POST" action="/postreq">
-            <button class="btn btn-primary btn-sm" name="update" value=<%= value.connectionObject.connectionId %>>
-              Update
+            <button class="btn btn-primary btn-sm" name="approve" value=<%= connection.connectionId %>>
+              Approve
             </button>
-            <button class="btn btn-danger btn-sm" name="delete" value=<%= value.connectionObject.connectionId %>>
-              Delete
+            <button class="btn btn-danger btn-sm" name="deny" value=<%= connection.connectionId %>>
+              Deny
             </button>
           </form>
-        </td>
+        </td>  
       </tr>
+      <% }); %>
       <% }); %>
 
     </table>

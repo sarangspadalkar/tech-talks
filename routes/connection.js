@@ -138,23 +138,38 @@ router1.post("/newConnection", urlencodedParser, [
             });
 
         } else {
+            
             var host = String(req.session.theUser.firstName + " " + req.session.theUser.lastName);
-            var connectionId = await userProfileDb.addConnection(req.session.theUser.userId,
-                req.body.Name,
-                host,
-                req.body.Topic,
-                req.body.Details,
-                req.body.Where,
-                moment(req.body.When).format("MMMM Do YYYY"),
-                moment(req.body.When).format("h:mm a")
-            );
+            if (req.session.theUser.isAdmin){
+                await userProfileDb.addConnection(req.session.theUser.userId,
+                    req.body.Name,
+                    host,
+                    req.body.Topic,
+                    req.body.Details,
+                    req.body.Where,
+                    moment(req.body.When).format("MMMM Do YYYY"),
+                    moment(req.body.When).format("h:mm a"),
+                    "approved"
+                );
+            }else{
+                await userProfileDb.addConnection(req.session.theUser.userId,
+                    req.body.Name,
+                    host,
+                    req.body.Topic,
+                    req.body.Details,
+                    req.body.Where,
+                    moment(req.body.When).format("MMMM Do YYYY"),
+                    moment(req.body.When).format("h:mm a")
+                );
+            }
+            
 
             //For adding new connection to creators saved connections.
-            await userProfileDb.saveUserConnection(
-                "Yes",
-                connectionId,
-                req.session.theUser.userId
-            );
+            // await userProfileDb.saveUserConnection(
+            //     "Yes",
+            //     connectionId,
+            //     req.session.theUser.userId
+            // );
             var savedConnections = await userProfileDb.getUserConnectionList(req.session.theUser.userId);
 
             if (savedConnections) {

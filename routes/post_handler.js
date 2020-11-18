@@ -86,6 +86,36 @@ router1.post("/", urlencodedParser, async function (req, res) {
         }
 
         // If invalid request render the saved connection view.
+    } else if (req.body.approve) {
+        if (req.session.theUser) {
+            await connectionDb.updateConnectionStatus(req.body.approve, 'approved');
+            var savedConnections = await connectionDb.getPendingRequestList();
+            res.render("adminConsole.ejs", {
+                savedConnections: savedConnections,
+                currentUser: req.session.theUser
+            });
+        } else {
+            res.render("login_fault.ejs", {
+                currentUser: ""
+            });
+            // res.render('login');
+        }
+
+    } else if (req.body.deny) {
+        if (req.session.theUser) {
+            await connectionDb.updateConnectionStatus(req.body.deny, 'denied');
+            var savedConnections = await connectionDb.getPendingRequestList();
+            res.render("adminConsole.ejs", {
+                savedConnections: savedConnections,
+                currentUser: req.session.theUser
+            });
+        } else {
+            res.render("login_fault.ejs", {
+                currentUser: ""
+            });
+            // res.render('login');
+        }
+
     } else {
         res.render("savedConnections.ejs", {
             savedConnections: savedConnections,

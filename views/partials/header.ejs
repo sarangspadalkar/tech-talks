@@ -37,7 +37,7 @@
                         Home </a></li>
                 <li class="list-inline-item"><a class="btn btn-outline-info btn-sm" role="button" href="/connections" >All Events <i
                             class="fa fa-calendar" aria-hidden="true"></i></a></li>
-                <% if (currentUser.isAdmin) { %>
+                <% if (currentUser && currentUser.isAdmin) { %>
                 <li class="list-inline-item"><a class="btn btn-outline-info btn-sm" href="/admin" role="button">Admin Console</a></li>
                 <% }%>
             </ul> 

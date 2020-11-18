@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require("body-parser");
 
-var userConnectionDb = require("../utility/UserProfileDB");
+var userConnectionDb = require("../utility/connectionDB");
 
 var userModel = require("../models/userModel");
 
@@ -14,9 +14,7 @@ router.get("/", async function (req, res) {
 
     if (req.session.theUser) {
 
-        var savedConnections = await userConnectionDb.getUserConnectionList(
-            req.session.theUser.userId
-        );
+        var savedConnections = await userConnectionDb.getPendingRequestList();
 
         res.render("adminConsole.ejs", {
             savedConnections: savedConnections,
