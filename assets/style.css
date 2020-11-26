@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  /* height: 100vh; */
+  color: black;
+  font-family: cursive, Arial, sans-serif;
+  font-size: 15px;
+  height: 100%;
+}
+
+.jumbotron {
+  height: 50px;
+  background-color: #E53E3E;
+
+}
+
+.list-group-item {
+  border: none;
+}
+
+.login-class {
+  border: none;
+}
