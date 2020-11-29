@@ -44,23 +44,11 @@
           <td><%= value.rsvp %></td>
           <td>
             <form method="POST" action="/postreq">
-              <button
-                class="btn btn-primary btn-sm"
-                name="update"
-                value="<%"
-                ="value.connectionObject.connectionId"
-                %
-              >
-                > Update
+              <button class="btn btn-primary btn-sm" name="update" value=<%= value.connectionObject.connectionId %>>
+                 Update
               </button>
-              <button
-                class="btn btn-danger btn-sm"
-                name="delete"
-                value="<%"
-                ="value.connectionObject.connectionId"
-                %
-              >
-                > Delete
+              <button class="btn btn-danger btn-sm" name="delete" value=<%= value.connectionObject.connectionId %>>
+                 Delete
               </button>
             </form>
           </td>

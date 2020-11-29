@@ -47,23 +47,12 @@
           <td><%= connection.connectionDate %></td>
           <td>
             <form method="POST" action="/postreq">
-              <button
-                class="btn btn-primary btn-sm"
-                name="approve"
-                value="<%"
-                ="connection.connectionId"
-                %
-              >
-                > Approve
+              <button class="btn btn-primary btn-sm" name="approve" value=<%= connection.connectionId %>>
+                 Approve
               </button>
-              <button
-                class="btn btn-danger btn-sm"
-                name="deny"
-                value="<%"
-                ="connection.connectionId"
-                %
-              >
-                > Deny
+          
+              <button class="btn btn-danger btn-sm" name="deny" value=<%= connection.connectionId %>>
+                 Deny
               </button>
             </form>
           </td>
@@ -75,7 +64,7 @@
     <%- include ('./partials/footer.ejs') %>
 
     <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      src=" https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
     ></script>

@@ -9,6 +9,7 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "mongoose": "^5.9.10",
+    "nodemon": "^2.0.6",
     "validator": "^13.0.0"
   },
   "name": "runners",

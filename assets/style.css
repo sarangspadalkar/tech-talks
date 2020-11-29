@@ -14,7 +14,7 @@ body {
 
 .list-group-item {
   border: none;
-  background-color: none;
+  background-color: transparent;
 }
 
 .login-class {
