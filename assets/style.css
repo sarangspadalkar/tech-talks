@@ -1,7 +1,7 @@
 body {
   margin: 0;
   /* height: 100vh; */
-  color: black;
+  color: white;
   font-family: cursive, Arial, sans-serif;
   font-size: 15px;
   height: 100%;
@@ -9,14 +9,27 @@ body {
 
 .jumbotron {
   height: 50px;
-  background-color: #E53E3E;
-
+  background: rgba(0, 0, 0, 0.158);
 }
 
 .list-group-item {
   border: none;
+  background-color: none;
 }
 
 .login-class {
   border: none;
+}
+
+.btn-sm {
+  border-radius: 1rem;
+}
+
+.background {
+  background: url("../assets/Images/test.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
 }

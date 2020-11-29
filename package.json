@@ -21,5 +21,13 @@
     "start": "node app.js"
   },
   "author": "Sarang Padalkar",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarangspadalkar/tech-talks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sarangspadalkar/tech-talks/issues"
+  },
+  "homepage": "https://github.com/sarangspadalkar/tech-talks#readme"
 }
