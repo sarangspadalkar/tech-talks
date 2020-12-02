@@ -1,4 +1,4 @@
-var group = require("lodash"); //for grouping connections.
+var group = require("lodash"); //for grouping events.
 var User = require("../models/userModel");
 
 var getUser = async function getUser(user_Id) {

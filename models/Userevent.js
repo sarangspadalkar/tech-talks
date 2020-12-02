@@ -1,8 +1,8 @@
 var mongoose = require("mongoose");
 
-var userConnectionSchema = new mongoose.Schema({
+var usereventSchema = new mongoose.Schema({
     userId: String,
-    connectionObject: {
+    eventObject: {
         type: Object,
         required: [true, "required"]
     },
@@ -11,4 +11,4 @@ var userConnectionSchema = new mongoose.Schema({
         required: [true, "required"]
     }
 });
-module.exports = mongoose.model("UserConnection", userConnectionSchema);
+module.exports = mongoose.model("Userevent", usereventSchema);

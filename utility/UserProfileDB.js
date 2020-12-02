@@ -1,49 +1,49 @@
-var UserConnection = require("../models/userConnection");
+var Userevent = require("../models/userevent");
 var UserProfile = require("../models/userProfileModel");
-var Connection = require("../models/connection");
-var connectionDb = require("./connectionDB");
+var event = require("../models/event");
+var eventDb = require("./eventDB");
 
 
-// Function to fetch all the user connections.
-var getUserConnectionList = async function (userId) {
+// Function to fetch all the user events.
+var getUsereventList = async function (userId) {
     try {
-        let result = await UserConnection.find({
+        let result = await Userevent.find({
             userId: userId
         });
         return result;
     } catch (error) {
-        console.log("Error while getting all user connections : " + error);
+        console.log("Error while getting all user events : " + error);
         return [];
     }
 };
 
 
-// Function to add the Connection to the savedConnections list for the User.
-var addUserConnection = async function (rsvp, connectionId, userId) {
+// Function to add the event to the savedevents list for the User.
+var addUserevent = async function (rsvp, eventId, userId) {
     try {
-        var connectionDetails = await connectionDb.getConnection(connectionId);
-        var newConnection = new UserConnection({
+        var eventDetails = await eventDb.getevent(eventId);
+        var newevent = new Userevent({
             userId: userId,
-            connectionObject: connectionDetails,
+            eventObject: eventDetails,
             rsvp: rsvp
         });
-        let result = await newConnection.save();
-        if (result == newConnection) {
-            console.log("User Connection Added");
+        let result = await newevent.save();
+        if (result == newevent) {
+            console.log("User event Added");
             return true;
         } else {
-            console.log("User Connection Adding failed");
+            console.log("User event Adding failed");
             return false;
         }
     } catch (error) {
-        console.log("Error while saving user connection : " + error);
+        console.log("Error while saving user event : " + error);
         return false;
     }
 };
 
-// Function to update the rsvp for a  user connection.
-var updateConnection = async function (item, rsvpStatus) {
-    const result = await UserConnection.updateOne(item, {
+// Function to update the rsvp for a  user event.
+var updateevent = async function (item, rsvpStatus) {
+    const result = await Userevent.updateOne(item, {
         rsvp: rsvpStatus
     });
     return result.n > 0 && result.ok == 1;
@@ -54,12 +54,12 @@ var updateConnection = async function (item, rsvpStatus) {
 
 
 //User Profile related Operations:
-var saveUserProfile = async function (user, userConnectionList) {
+var saveUserProfile = async function (user, usereventList) {
     let result;
     try {
         var newUserProfile = new UserProfile({
             userObject: user,
-            userConnections: userConnectionList
+            userevents: usereventList
         });
         result = await newUserProfile.save();
         if (result == newUserProfile) {
@@ -77,45 +77,45 @@ var saveUserProfile = async function (user, userConnectionList) {
 };
 
 
-// Function to remove the connection from the userconnection list.
-var removeUserConnection = async function (connectionId, userId) {
+// Function to remove the event from the userevent list.
+var removeUserevent = async function (eventId, userId) {
     // ok: 1 if no errors occurred
     // deletedCount: the number of documents deleted
     try {
-        var connectionDetails = await connectionDb.getConnection(connectionId);
-        const res = await UserConnection.deleteOne({
+        var eventDetails = await eventDb.getevent(eventId);
+        const res = await Userevent.deleteOne({
             userId: userId,
-            connectionObject: connectionDetails
+            eventObject: eventDetails
         });
-        console.log("Connection deleted.");
+        console.log("event deleted.");
 
         return res.ok > 0 && res.deletedCount > 0;
     } catch (error) {
-        console.log("Error while removing user connection : " + error);
+        console.log("Error while removing user event : " + error);
         return false;
     }
 };
 
-// Function to save the user connection.
-var saveUserConnection = async function (rsvp, connectionId, userId) {
+// Function to save the user event.
+var saveUserevent = async function (rsvp, eventId, userId) {
     let opResult = false;
-    var newConnection = await connectionDb.getConnection(connectionId);
-    let element = await UserConnection.findOne({
+    var newevent = await eventDb.getevent(eventId);
+    let element = await Userevent.findOne({
         userId: userId,
-        connectionObject: newConnection
+        eventObject: newevent
     });
     if (element) {
-        //update connection
-        opResult = await updateConnection(element, rsvp);
+        //update event
+        opResult = await updateevent(element, rsvp);
     } else {
-        //add connection
-        opResult = await addUserConnection(rsvp, connectionId, userId);
+        //add event
+        opResult = await addUserevent(rsvp, eventId, userId);
     }
     return opResult;
 };
 
-//Add a new connection to DB
-var addConnection = async function (
+//Add a new event to DB
+var addevent = async function (
     userId,
     cName,
     hostedby,
@@ -127,36 +127,36 @@ var addConnection = async function (
     cStatus
 ) {
     try {
-        let randomId = Math.floor(Math.random() * Math.floor(100000000)); //Generate a 8 digit random Id for the Connection.
-        var newConnection = new Connection({
-            connectionId: randomId,
+        let randomId = Math.floor(Math.random() * Math.floor(100000000)); //Generate a 8 digit random Id for the event.
+        var newevent = new event({
+            eventId: randomId,
             userId: userId,
-            connectionName: cName,
+            eventName: cName,
             hostedby: hostedby,
-            connectionTopic: cTopic,
-            connectionDetails: cDetails,
-            connectionLocation: cLocation,
-            connectionDate: cDate,
-            connectionTime: cTime,
-            connectionStatus:cStatus
+            eventTopic: cTopic,
+            eventDetails: cDetails,
+            eventLocation: cLocation,
+            eventDate: cDate,
+            eventTime: cTime,
+            eventStatus:cStatus
         });
-        let result = await newConnection.save();
-        if (result == newConnection) {
-            console.log("Connection Added");
+        let result = await newevent.save();
+        if (result == newevent) {
+            console.log("event Added");
             return randomId;
         } else {
-            console.log("Connection Adding failed");
+            console.log("event Adding failed");
         }
     } catch (error) {
-        console.log("Error while saving connection : " + error);
+        console.log("Error while saving event : " + error);
     }
 };
 
 
 module.exports = {
-    addConnection: addConnection,
+    addevent: addevent,
     saveUserProfile: saveUserProfile,
-    getUserConnectionList: getUserConnectionList,
-    removeUserConnection: removeUserConnection,
-    saveUserConnection: saveUserConnection
+    getUsereventList: getUsereventList,
+    removeUserevent: removeUserevent,
+    saveUserevent: saveUserevent
 };
