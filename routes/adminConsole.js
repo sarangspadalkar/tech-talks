@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require("body-parser");
 
-var userConnectionDb = require("../utility/connectionDB");
+var usereventDb = require("../utility/eventDB");
 
 var userModel = require("../models/userModel");
 
@@ -14,10 +14,10 @@ router.get("/", async function (req, res) {
 
     if (req.session.theUser) {
 
-        var savedConnections = await userConnectionDb.getPendingRequestList();
+        var savedevents = await usereventDb.getPendingRequestList();
 
         res.render("adminConsole.ejs", {
-            savedConnections: savedConnections,
+            savedevents: savedevents,
             currentUser: req.session.theUser
         });
     } else {

@@ -38,20 +38,20 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <% Object.keys(savedConnections).forEach(value=>{ %> <%
-        savedConnections[value].forEach(connection=>{ %>
+        <% Object.keys(savedevents).forEach(value=>{ %> <%
+        savedevents[value].forEach(event=>{ %>
         <tr>
-          <td><%= connection.connectionName %></td>
-          <td><%= connection.connectionTopic %></td>
-          <td><%= connection.hostedby %></td>
-          <td><%= connection.connectionDate %></td>
+          <td><%= event.eventName %></td>
+          <td><%= event.eventTopic %></td>
+          <td><%= event.hostedby %></td>
+          <td><%= event.eventDate %></td>
           <td>
             <form method="POST" action="/postreq">
-              <button class="btn btn-primary btn-sm" name="approve" value=<%= connection.connectionId %>>
+              <button class="btn btn-primary btn-sm" name="approve" value=<%= event.eventId %>>
                  Approve
               </button>
           
-              <button class="btn btn-danger btn-sm" name="deny" value=<%= connection.connectionId %>>
+              <button class="btn btn-danger btn-sm" name="deny" value=<%= event.eventId %>>
                  Deny
               </button>
             </form>

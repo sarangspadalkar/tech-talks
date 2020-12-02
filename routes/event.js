@@ -1,5 +1,5 @@
 /*
-This file is used for managing the routes to the connection page. 
+This file is used for managing the routes to the event page. 
 */
 var express = require('express');
 var router1 = express.Router();
@@ -12,7 +12,7 @@ const {
     check,
     validationResult
 } = require('express-validator');
-var connectionDb = require("../utility/connectionDB");
+var eventDb = require("../utility/eventDB");
 var userDb = require("../utility/userDB");
 var userProfileDb = require("../utility/userProfileDB");
 
@@ -24,42 +24,42 @@ var urlencodedParser = bodyParser.urlencoded({
 
 router1.get("/", async function (req, res) {
 
-    // Check if the connectionId is passed in the req query and if the passed connectionId is valid.
-    if (validator.isNumeric(req.query.connectionId)) {
+    // Check if the eventId is passed in the req query and if the passed eventId is valid.
+    if (validator.isNumeric(req.query.eventId)) {
 
-        var connectionData = await connectionDb.getConnection(
-            req.query.connectionId
+        var eventData = await eventDb.getevent(
+            req.query.eventId
         );
 
-        if (connectionData) {
-            res.render("connection.ejs", {
-                connectionDetails: connectionData,
+        if (eventData) {
+            res.render("event.ejs", {
+                eventDetails: eventData,
                 currentUser: req.session.theUser
             });
 
-            // if the connectionId is not found in the Database , return fault page.
+            // if the eventId is not found in the Database , return fault page.
         } else {
             res.render("fault.ejs", {
                 currentUser: req.session.theUser
             });
         }
 
-        // If connectionId is not passed in the req query or connection Id did not pass the validation, render all the connections.
+        // If eventId is not passed in the req query or event Id did not pass the validation, render all the events.
     } else {
-        var connectionData = await connectionDb.getConnections();
-        if (Object.keys(connectionData).length > 0) {
-            res.render("connections.ejs", {
-                connectionData: connectionData,
+        var eventData = await eventDb.getevents();
+        if (Object.keys(eventData).length > 0) {
+            res.render("events.ejs", {
+                eventData: eventData,
                 currentUser: req.session.theUser
             });
         }
     }
 });
 
-router1.get("/newConnection", async function (req, res) {
+router1.get("/newevent", async function (req, res) {
 
     if (req.session.theUser) {
-        res.render("newConnection.ejs", {
+        res.render("newevent.ejs", {
             currentUser: req.session.theUser,
             errors: null
         });
@@ -72,7 +72,7 @@ router1.get("/newConnection", async function (req, res) {
     }
 });
 
-router1.post("/newConnection", urlencodedParser, [
+router1.post("/newevent", urlencodedParser, [
 
     check('Topic').custom((value) => {
         if (!value.split(' ').every(function (word) {
@@ -132,7 +132,7 @@ router1.post("/newConnection", urlencodedParser, [
         var errors = validationResult(req);
         if (!errors.isEmpty()) {
 
-            return res.render("newConnection.ejs", {
+            return res.render("newevent.ejs", {
                 currentUser: req.session.theUser,
                 errors: errors.array()
             });
@@ -141,7 +141,7 @@ router1.post("/newConnection", urlencodedParser, [
             
             var host = String(req.session.theUser.firstName + " " + req.session.theUser.lastName);
             if (req.session.theUser.isAdmin){
-                await userProfileDb.addConnection(req.session.theUser.userId,
+                await userProfileDb.addevent(req.session.theUser.userId,
                     req.body.Name,
                     host,
                     req.body.Topic,
@@ -152,7 +152,7 @@ router1.post("/newConnection", urlencodedParser, [
                     "approved"
                 );
             }else{
-                await userProfileDb.addConnection(req.session.theUser.userId,
+                await userProfileDb.addevent(req.session.theUser.userId,
                     req.body.Name,
                     host,
                     req.body.Topic,
@@ -164,21 +164,21 @@ router1.post("/newConnection", urlencodedParser, [
             }
             
 
-            //For adding new connection to creators saved connections.
-            // await userProfileDb.saveUserConnection(
+            //For adding new event to creators saved events.
+            // await userProfileDb.saveUserevent(
             //     "Yes",
-            //     connectionId,
+            //     eventId,
             //     req.session.theUser.userId
             // );
-            var savedConnections = await userProfileDb.getUserConnectionList(req.session.theUser.userId);
+            var savedevents = await userProfileDb.getUsereventList(req.session.theUser.userId);
 
-            if (savedConnections) {
-                res.render("savedConnections.ejs", {
-                    savedConnections: savedConnections,
+            if (savedevents) {
+                res.render("savedevents.ejs", {
+                    savedevents: savedevents,
                     currentUser: req.session.theUser
                 });
             } else {
-                res.render("Error fetching savedConnections")
+                res.render("Error fetching savedevents")
             }
         }
         ///End

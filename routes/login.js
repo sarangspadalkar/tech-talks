@@ -5,8 +5,8 @@ const {
     check,
     validationResult
 } = require('express-validator');
-var connectionDb = require("../utility/connectionDB");
-var userConnectionDb = require("../utility/UserProfileDB");
+var eventDb = require("../utility/eventDB");
+var usereventDb = require("../utility/UserProfileDB");
 var userDb = require("../utility/userDB");
 var userProfile = require("../utility/userProfileDB");
 var userModel = require("../models/userModel");
@@ -72,32 +72,32 @@ router.post("/", urlencodedParser, [
                         // load the user details in the session
                         req.session.theUser = userdetails;
 
-                        //fetch the saved connections from DB
-                        var savedConnections = await userConnectionDb.getUserConnectionList(
+                        //fetch the saved events from DB
+                        var savedevents = await usereventDb.getUsereventList(
                             req.session.theUser.userId
                         );
 
-                        // Add the list of saved connections to the session object as "currentProfile".
+                        // Add the list of saved events to the session object as "currentProfile".
                         req.session.currentProfile = []
-                        savedConnections.forEach(value => {
+                        savedevents.forEach(value => {
                             req.session.currentProfile.push({
-                                ...value.connectionObject,
+                                ...value.eventObject,
                                 ...{
                                     rsvp: value.rsvp
                                 }
                             });
                         });
 
-                        var userProfile = await userConnectionDb.saveUserProfile(
+                        var userProfile = await usereventDb.saveUserProfile(
                             req.session.theUser,
-                            savedConnections
+                            savedevents
                         );
                         if (userProfile) {
 
                             req.session.userProfile = userProfile;
                         }
-                        res.render("savedConnections.ejs", {
-                            savedConnections: savedConnections,
+                        res.render("savedevents.ejs", {
+                            savedevents: savedevents,
                             currentUser: req.session.theUser
                         });
                     } else {
@@ -136,17 +136,17 @@ router.post("/", urlencodedParser, [
 });
 
 
-//To handle GET request for saved connections
-router.get("/savedConnections", async function (req, res) {
+//To handle GET request for saved events
+router.get("/savedevents", async function (req, res) {
 
     if (req.session.theUser) {
 
-        var savedConnections = await userConnectionDb.getUserConnectionList(
+        var savedevents = await usereventDb.getUsereventList(
             req.session.theUser.userId
         );
 
-        res.render("savedConnections.ejs", {
-            savedConnections: savedConnections,
+        res.render("savedevents.ejs", {
+            savedevents: savedevents,
             currentUser: req.session.theUser
         });
     } else {

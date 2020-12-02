@@ -7,7 +7,7 @@ var bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({
     extended: false
 });
-var connectionDb = require("../utility/connectionDB");
+var eventDb = require("../utility/eventDB");
 var userDb = require("../utility/userDB");
 var userProfile = require("../utility/userProfileDB");
 var userModel = require("../models/userModel");
@@ -17,14 +17,14 @@ router1.post("/", urlencodedParser, async function (req, res) {
     // Check if the action is an update request.
     if (req.body.update) {
         if (req.session.theUser) {
-            var connectionData = await connectionDb.getConnection(req.body.update);
-            if (connectionData) {
-                res.render("connection.ejs", {
-                    connectionDetails: connectionData,
+            var eventData = await eventDb.getevent(req.body.update);
+            if (eventData) {
+                res.render("event.ejs", {
+                    eventDetails: eventData,
                     currentUser: req.session.theUser
                 });
 
-                // if the connectionId is not found in the Database, return fault page.
+                // if the eventId is not found in the Database, return fault page.
             } else {
                 res.render("fault.ejs", {
                     currentUser: req.session.theUser
@@ -40,12 +40,12 @@ router1.post("/", urlencodedParser, async function (req, res) {
         // Check if the action is delete request.
     } else if (req.body.delete) {
         if (req.session.theUser) {
-            var connectionData = await connectionDb.getConnection(req.body.delete);
-            if (connectionData) {
-                await userProfile.removeUserConnection(req.body.delete, req.session.theUser.userId);
-                var savedConnections = await userProfile.getUserConnectionList(req.session.theUser.userId);
-                res.render("savedConnections.ejs", {
-                    savedConnections: savedConnections,
+            var eventData = await eventDb.getevent(req.body.delete);
+            if (eventData) {
+                await userProfile.removeUserevent(req.body.delete, req.session.theUser.userId);
+                var savedevents = await userProfile.getUsereventList(req.session.theUser.userId);
+                res.render("savedevents.ejs", {
+                    savedevents: savedevents,
                     currentUser: req.session.theUser
                 });
             }
@@ -60,22 +60,22 @@ router1.post("/", urlencodedParser, async function (req, res) {
     } else if (req.body.rsvp) {
         if (req.session.theUser) {
             rsvp_action = req.body.rsvp.split(" ")[0]
-            connectionId = req.body.rsvp.split(" ")[1]
-            await userProfile.saveUserConnection(
+            eventId = req.body.rsvp.split(" ")[1]
+            await userProfile.saveUserevent(
                 rsvp_action,
-                connectionId,
+                eventId,
                 req.session.theUser.userId
             );
-            var savedConnections = await userProfile.getUserConnectionList(req.session.theUser.userId);
-            // console.log("Inside rsvp" + savedConnections);
+            var savedevents = await userProfile.getUsereventList(req.session.theUser.userId);
+            // console.log("Inside rsvp" + savedevents);
 
-            if (savedConnections) {
-                res.render("savedConnections.ejs", {
-                    savedConnections: savedConnections,
+            if (savedevents) {
+                res.render("savedevents.ejs", {
+                    savedevents: savedevents,
                     currentUser: req.session.theUser
                 });
             } else {
-                res.render("Error fetching savedConnections")
+                res.render("Error fetching savedevents")
             }
         } else {
 
@@ -85,13 +85,13 @@ router1.post("/", urlencodedParser, async function (req, res) {
             // res.render('login');
         }
 
-        // If invalid request render the saved connection view.
+        // If invalid request render the saved event view.
     } else if (req.body.approve) {
         if (req.session.theUser) {
-            await connectionDb.updateConnectionStatus(req.body.approve, 'approved');
-            var savedConnections = await connectionDb.getPendingRequestList();
+            await eventDb.updateeventStatus(req.body.approve, 'approved');
+            var savedevents = await eventDb.getPendingRequestList();
             res.render("adminConsole.ejs", {
-                savedConnections: savedConnections,
+                savedevents: savedevents,
                 currentUser: req.session.theUser
             });
         } else {
@@ -103,10 +103,10 @@ router1.post("/", urlencodedParser, async function (req, res) {
 
     } else if (req.body.deny) {
         if (req.session.theUser) {
-            await connectionDb.updateConnectionStatus(req.body.deny, 'denied');
-            var savedConnections = await connectionDb.getPendingRequestList();
+            await eventDb.updateeventStatus(req.body.deny, 'denied');
+            var savedevents = await eventDb.getPendingRequestList();
             res.render("adminConsole.ejs", {
-                savedConnections: savedConnections,
+                savedevents: savedevents,
                 currentUser: req.session.theUser
             });
         } else {
@@ -117,8 +117,8 @@ router1.post("/", urlencodedParser, async function (req, res) {
         }
 
     } else {
-        res.render("savedConnections.ejs", {
-            savedConnections: savedConnections,
+        res.render("savedevents.ejs", {
+            savedevents: savedevents,
             currentUser: req.session.theUser
         });
     }

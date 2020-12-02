@@ -46,8 +46,8 @@ initializeDb();
 var index = require(__dirname + "/routes/index");
 var login = require(__dirname + "/routes/login");
 var signup = require(__dirname + "/routes/signup");
-var connection = require(__dirname + "/routes/connection");
-var connections = require(__dirname + "/routes/connections");
+var event = require(__dirname + "/routes/event");
+var events = require(__dirname + "/routes/events");
 var contact = require(__dirname + "/routes/contact");
 var about = require(__dirname + "/routes/about");
 var postreq = require(__dirname + "/routes/post_handler");
@@ -60,8 +60,8 @@ app.use("/postreq", postreq); //This route is used to handle all the post reques
 app.use("/", index); //This route is used for home page.
 app.use("/login", login); //This route is used for login page.
 app.use("/signup", signup); //This route is used for signup page.
-app.use("/connection", connection); //This route is used for connection page.
-app.use("/connections", connections); //This route is used for connections page.
+app.use("/event", event); //This route is used for event page.
+app.use("/events", events); //This route is used for events page.
 app.use("/about", about); //This route is used for about page.
 app.use("/contact", contact); //This route is used for contact page.
 app.use("/admin", admin);

@@ -19,30 +19,30 @@
   <%- include ('./partials/header.ejs' ,currentUser) %>
 
   <div class="container">
-    <h2><%=connectionDetails.connectionName %></h2>
+    <h2><%=eventDetails.eventName %></h2>
 
     <div class="row align-items-center">
       <div class="col-sm-0.5">
-        <img alt="Person Logo" style="width: 120px;" src=<%= connectionDetails.connectionImageURL %> />
+        <img alt="Person Logo" style="width: 120px;" src=<%= eventDetails.eventImageURL %> />
       </div>
       <div class="col-sm-5" style="font-size: larger;">
         <ul>
-          <li><strong>Hosted by:</strong> <span ><%= connectionDetails.hostedby %></span> </li>
-          <li><strong>Date:</strong> <span ><%= connectionDetails.connectionDate %>  </span>  </li>
-          <li><strong>Time:</strong> <span > <%= connectionDetails.connectionTime %></span></li>
-          <li><strong>Location:</strong> <span ><%=connectionDetails.connectionLocation %></span> </li>
+          <li><strong>Hosted by:</strong> <span ><%= eventDetails.hostedby %></span> </li>
+          <li><strong>Date:</strong> <span ><%= eventDetails.eventDate %>  </span>  </li>
+          <li><strong>Time:</strong> <span > <%= eventDetails.eventTime %></span></li>
+          <li><strong>Location:</strong> <span ><%=eventDetails.eventLocation %></span> </li>
         </ul>
       </div>
       <div class="col-sm-3">
         <h4>Interested ?</h4>
         <form method="POST" action="/postreq">
-          <button class="btn bg-success btn-sm" name="rsvp" value="Yes <%= connectionDetails.connectionId %>">
+          <button class="btn bg-success btn-sm" name="rsvp" value="Yes <%= eventDetails.eventId %>">
             Yes
           </button>
-          <button class="btn bg-danger btn-sm" name="rsvp" value="No <%= connectionDetails.connectionId %>">
+          <button class="btn bg-danger btn-sm" name="rsvp" value="No <%= eventDetails.eventId %>">
             No
           </button>
-          <button class="btn bg-primary btn-sm" name="rsvp" value="Maybe <%= connectionDetails.connectionId %>">
+          <button class="btn bg-primary btn-sm" name="rsvp" value="Maybe <%= eventDetails.eventId %>">
             Maybe
           </button>
         </form>
@@ -51,7 +51,7 @@
     <div class="row">
       <div class="col-sm-4">
         <h4>Details:</h4>
-        <p><%=connectionDetails.connectionDetails %></p>
+        <p><%=eventDetails.eventDetails %></p>
       </div>
 
     </div>

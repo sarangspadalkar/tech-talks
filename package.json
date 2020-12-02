@@ -12,9 +12,9 @@
     "nodemon": "^2.0.6",
     "validator": "^13.0.0"
   },
-  "name": "runners",
+  "name": "tech-talks",
   "version": "1.0.0",
-  "description": "Marathon Runners",
+  "description": "Tech Talks",
   "main": "app.js",
   "devDependencies": {},
   "scripts": {
@@ -25,10 +25,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sarangspadalkar/tech-talks.git"
+    "url": ""
   },
   "bugs": {
-    "url": "https://github.com/sarangspadalkar/tech-talks/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/sarangspadalkar/tech-talks#readme"
+  "homepage": ""
 }

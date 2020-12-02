@@ -5,8 +5,8 @@ const {
     check,
     validationResult
 } = require('express-validator');
-var connectionDb = require("../utility/connectionDB");
-var userConnectionDb = require("../utility/UserProfileDB");
+var eventDb = require("../utility/eventDB");
+var usereventDb = require("../utility/UserProfileDB");
 var userDb = require("../utility/userDB");
 var userProfile = require("../utility/userProfileDB");
 var userModel = require("../models/userModel");
@@ -63,7 +63,7 @@ router.post("/", urlencodedParser, [
 
         if (!user_name) {
 
-            var connectionId = await userDb.add_user(
+            var eventId = await userDb.add_user(
                 req.body.firstName,
                 req.body.lastName,
                 req.body.username,

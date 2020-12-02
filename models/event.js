@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
-var connectionSchema = new mongoose.Schema({
-    connectionId: {
+var eventSchema = new mongoose.Schema({
+    eventId: {
         type: String,
         required: [true, "required"]
     },
@@ -9,7 +9,7 @@ var connectionSchema = new mongoose.Schema({
         type: String,
         required: [true, "required"]
     },
-    connectionName: {
+    eventName: {
         type: String,
         required: [true, "required"]
     },
@@ -18,20 +18,20 @@ var connectionSchema = new mongoose.Schema({
         default: "Sarang Padalkar",
         required: [true, "required"]
     },
-    connectionTopic: {
+    eventTopic: {
         type: String,
         required: [true, "required"]
     },
-    connectionDetails: String,
-    connectionLocation: String,
-    connectionDate: String,
-    connectionTime: String,
-    connectionImageURL: {
+    eventDetails: String,
+    eventLocation: String,
+    eventDate: String,
+    eventTime: String,
+    eventImageURL: {
         type: String,
         default: "/assets/Images/man3.png",
         required: [true, "required"]
     },
-    connectionStatus: {
+    eventStatus: {
         type: String,
         default: "pending",
         required: [true, "required"]
@@ -39,4 +39,4 @@ var connectionSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model("Connections", connectionSchema);
+module.exports = mongoose.model("events", eventSchema);

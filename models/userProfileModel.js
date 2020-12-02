@@ -5,7 +5,7 @@ var userProfileSchema = new mongoose.Schema({
         type: Object,
         required: [true, "required"]
     },
-    userConnections: {
+    userevents: {
         type: Array,
         required: [true, "required"]
     }
