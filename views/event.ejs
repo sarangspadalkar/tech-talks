@@ -19,7 +19,22 @@
   <%- include ('./partials/header.ejs' ,currentUser) %>
 
   <div class="container">
-    <h2><%=eventDetails.eventName %></h2>
+    <div class="row align-items-center">
+      <div class="col-sm-6">
+        <h2><%=eventDetails.eventName %></h2>
+      </div>
+      <% if (currentUser && currentUser.isAdmin) { %>
+      <div class="col-sm-6">
+        <form method="POST" action="/postreq">
+          <button class="btn bg-danger " name="deleteEvent" value="<%= eventDetails.eventId %>">
+            Delete Event
+          </button>
+        </form>
+        
+      </div>
+      <% }%>
+    </div>
+   
 
     <div class="row align-items-center">
       <div class="col-sm-0.5">

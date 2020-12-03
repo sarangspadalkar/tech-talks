@@ -116,6 +116,23 @@ router1.post("/", urlencodedParser, async function (req, res) {
             // res.render('login');
         }
 
+    } else if (req.body.deleteEvent) {
+        if (req.session.theUser) {
+            await eventDb.deleteEvent(req.body.deleteEvent);
+            var eventData = await eventDb.getevents();
+            if (Object.keys(eventData).length > 0) {
+                res.render("events.ejs", {
+                    eventData: eventData,
+                    currentUser: req.session.theUser
+                });
+            } else {
+                res.send("No events in DB");
+            }
+        } else {
+            res.render("login_fault.ejs", {
+                currentUser: ""
+            });
+        }
     } else {
         res.render("savedevents.ejs", {
             savedevents: savedevents,
