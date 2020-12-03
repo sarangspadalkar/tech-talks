@@ -46,7 +46,19 @@ var getevent = async function getevent(eventID) {
   }
 };
 var updateeventStatus = async function (eventId, status) {
-  const result = await eventModel.updateOne({eventId: eventId}, {$set: { "eventStatus": status}
+  const result = await eventModel.updateOne({
+    eventId: eventId
+  }, {
+    $set: {
+      "eventStatus": status
+    }
+  });
+  return result.n > 0 && result.ok == 1;
+};
+
+var deleteEvent = async function (eventId) {
+  const result = await eventModel.deleteOne({
+    eventId: eventId
   });
   return result.n > 0 && result.ok == 1;
 };
@@ -55,5 +67,6 @@ module.exports = {
   getevent: getevent,
   getevents: getevents,
   getPendingRequestList: getPendingRequestList,
-  updateeventStatus:updateeventStatus
+  updateeventStatus: updateeventStatus,
+  deleteEvent: deleteEvent
 };
